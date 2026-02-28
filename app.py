@@ -1,4 +1,5 @@
 ﻿import pygame
+from pathlib import Path
 
 from live2d.core import Live2D
 from live2d.framework import Live2DFramework
@@ -18,7 +19,9 @@ Live2DFramework.setPlatformManager(PlatformManager())
 model = LAppModel()
 
 name = "kasumi2"
-model.LoadModelJson(f"resources/{name}/{name}.model.json")
+BASE_DIR = Path(__file__).resolve().parent
+MODEL_JSON = BASE_DIR / "resources" / name / f"{name}.model.json"
+model.LoadModelJson(str(MODEL_JSON))
 
 drag = False
 scaling = 1
